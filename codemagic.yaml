@@ -8,8 +8,8 @@ workflows:
         script: |
           python3 -m pip install --upgrade pip
           pip install --upgrade Cython setuptools
-          pip install --upgrade buildozer
-          pip install --upgrade git+https://github.com/kivy/python-for-android.git
+          pip install --upgrade --force-reinstall git+https://github.com/kivy/python-for-android.git
+          pip install --upgrade --force-reinstall git+https://github.com/kivy/buildozer.git
       - name: Build APK with Buildozer
         script: |
           buildozer android debug
