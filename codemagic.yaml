@@ -7,7 +7,9 @@ workflows:
       - name: Install dependencies
         script: |
           python3 -m pip install --upgrade pip
-          pip install buildozer cython setuptools
+          pip install --upgrade Cython setuptools
+          pip install --upgrade buildozer
+          pip install --upgrade git+https://github.com/kivy/python-for-android.git
       - name: Build APK with Buildozer
         script: |
           buildozer android debug
