@@ -1,14 +1,15 @@
 workflows:
-  android-apk-build:
-    name: Build Android APK
-    max_build_duration: 30
+  python-android-apk:
+    name: Build Python Android APK
+    max_build_duration: 60
     instance_type: mac_mini_m2
     scripts:
-      - name: Set up local.properties
+      - name: Install dependencies
         script: |
-          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
-      - name: Build Android APK
+          python3 -m pip install --upgrade pip
+          pip install buildozer cython setuptools
+      - name: Build APK with Buildozer
         script: |
-          gradle assembleDebug
+          buildozer android debug
     artifacts:
-      - app/build/outputs/**/*.apk
+      - bin/*.apk
